@@ -1,8 +1,15 @@
 <script>
+// Import Store.js
+import { store } from '../store';
 
 export default {
     name: 'AppHeader',
     props: ['message'],
+    data() {
+        return {
+            store,
+        }
+    }
 }
 </script>
 
@@ -13,8 +20,9 @@ export default {
         </div>
 
         <form class="d-flex" role="search">
-            <input class="form-control" type="search" placeholder="Cerca il tuo film preferito" aria-label="Search">
-            <button class="btn btn-danger" type="submit">Cerca</button>
+            <input class="form-control" type="search" placeholder="Cerca il tuo film preferito" aria-label="Search"
+                v-model.trim="store.searchMovie">
+            <button class="btn btn-danger" type="submit" @click.prevent="$emit('performSearch')">Cerca</button>
         </form>
     </header>
 </template>

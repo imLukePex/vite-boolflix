@@ -21,9 +21,15 @@ export default {
     },
     methods: {
         getMovies() {
+            let myURL = store.apiMovies;
+
+            if (store.searchMovie !== "") {
+                myURL += `&${store.queryParam}=${store.searchMovie}`
+            }
+
             // Chiamata Movies
             axios
-                .get(store.apiMovies)
+                .get(myURL)
                 .then((res => {
                     console.log(res.data.results);
                     store.moviesList = res.data.results;
@@ -40,10 +46,16 @@ export default {
 </script>
 
 <template>
-    <AppHeader message="BOOLFLIX" />
-    <MoviesList />
+    <AppHeader message="BOOLFLIX" @performSearch="getMovies" />
+    <main>
+        <MoviesList />
+    </main>
 </template>
 
 <style lang="scss">
 @use './styles/general.scss';
+
+main {
+    padding-top: 40px;
+}
 </style>
