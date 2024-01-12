@@ -37,8 +37,8 @@ export default {
         <!-- Contenitore con le informazioni del film/serie tv -->
         <div class="box-informations">
             <!-- Titoli -->
-            <h4 class="info title"><strong>Titolo:</strong> {{ info.title }}</h4>
-            <h5 class="info o-title"><strong>Titolo Originale:</strong> {{ info.original_title }}</h5>
+            <h4 class="info title"><strong>Titolo:</strong> {{ info.title || info.name }}</h4>
+            <h5 class="info o-title"><strong>Titolo Originale:</strong> {{ info.original_title || info.original_name }}</h5>
 
             <!-- Lingua -->
             <div class="box-language">
