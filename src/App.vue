@@ -21,18 +21,36 @@ export default {
     },
     methods: {
         getMovies() {
-            let myURL = store.apiMovies;
+            // Metodo Film
+            let moviesURL = store.apiMovies;
 
             if (store.searchMovie !== "") {
-                myURL += `&${store.queryParam}=${store.searchMovie}`
+                moviesURL += `&${store.queryParam}=${store.searchMovie}`
             }
 
-            // Chiamata Movies
+            // Chiamata Film
             axios
-                .get(myURL)
+                .get(moviesURL)
                 .then((res => {
                     console.log(res.data.results);
                     store.moviesList = res.data.results;
+                }))
+                .catch((err) => {
+                    console.log("Errori", err);
+                });
+
+            // Metodo Serie TV
+            let seriesURL = store.apiSeries;
+            if (store.searchMovie !== "") {
+                seriesURL += `&${store.queryParam}=${store.searchMovie}`
+            }
+
+            // Chiamata Serie TV
+            axios
+                .get(seriesURL)
+                .then((res => {
+                    console.log(res.data.results);
+                    store.seriesList = res.data.results;
                 }))
                 .catch((err) => {
                     console.log("Errori", err);
