@@ -35,11 +35,17 @@ header {
     padding: 10px 20px;
     background-color: black;
     box-shadow: 0 7px 15px -15px gray;
-}
 
-h1 {
-    color: red;
-    font-weight: 700;
-    margin: 0;
+    h1 {
+        color: red;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .btn {
+        margin-left: -5px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
 }
 </style>
